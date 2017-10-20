@@ -1,0 +1,27 @@
+{
+  "name": "regauthen",
+  "version": "1.0.0",
+  "description": "Reg Authentication",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webgunti05/mean-auth-app.git"
+  },
+  "keywords": [
+    "Reg",
+    "Authentication"
+  ],
+  "author": "Anji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/webgunti05/mean-auth-app/issues"
+  },
+  "homepage": "https://github.com/webgunti05/mean-auth-app#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.12.3"
+  }
+}
