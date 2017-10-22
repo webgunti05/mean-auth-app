@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 const path = require('path');
 
-mongoose.connect(config.uri, (err) => {
+mongoose.connect(config.uri,{ useMongoClient:true }, (err) => {
     if(err){
         console.log('Could not connected to database :', err);
     } else{
