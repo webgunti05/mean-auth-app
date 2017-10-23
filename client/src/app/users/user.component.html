@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        
+        <table class="table mytable table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email Id</th>
+                    <th>Password</th>
+                    <th>Confirm Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td> {{user.username}}</td>
+                    <td> {{user.email}}</td>
+                    <td> {{user.password}}</td>
+                    <td> {{user.confirm}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

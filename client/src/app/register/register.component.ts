@@ -10,6 +10,9 @@ import { AuthService } from '../services/auth.service';
 export class RegisterComponent implements OnInit {
 
   userForm : FormGroup;
+  message ;
+  messageClass;
+  proccesing;
 
   constructor( private formBuilder: FormBuilder, private authSvc: AuthService) { 
     this.createForm();
@@ -41,13 +44,13 @@ export class RegisterComponent implements OnInit {
       ])],
       confirm : [null, Validators.required]
      
-    }, { Validator : this.matchingPasswords('password', 'confirm')});
+    }, { validator : this.matchingPasswords('password', 'confirm')});
   }
 
   
 
   validateEmail(controls){
-    const regExp = new RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/);
+    const regExp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     if(regExp.test(controls.value)){
       return null;
     } else{
@@ -65,7 +68,7 @@ export class RegisterComponent implements OnInit {
   }
 
   validatePassword(controls){
-    const regExp = new RegExp(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,100}$/);
+    const regExp = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{8,35}$/);
     if(regExp.test(controls.value)){
       return null;
     } else{
@@ -89,7 +92,13 @@ export class RegisterComponent implements OnInit {
       password : this.userForm.get('password').value
   }
   this.authSvc.registerUser(user).subscribe(data => {
-    console.log(data);
+    if(!data.success){
+      this.messageClass = "alert alert-danger";
+      this.message = data.message;
+    } else{
+      this.messageClass = "alert alert-success";
+      this.message = data.message;
+    }
   });
 }
 

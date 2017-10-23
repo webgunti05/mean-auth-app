@@ -8,6 +8,7 @@ const authentication = require('./routes/authentication')(router);
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+
 mongoose.Promise = global.Promise;
 mongoose.connect(config.uri,{ useMongoClient:true }, (err) => {
     if(err){
@@ -25,11 +26,13 @@ app.use(cors ({
 app.use(bodyParser.urlencoded({ extended : false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/client/dist/'));
-app.use('/autentication', authentication);
+app.use('/authentication', authentication);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/client/dist/index.html'));
 });
+
+
 
 app.listen(8080, () => {
     console.log('Listening to port 8080');
