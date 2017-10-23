@@ -10,6 +10,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NavService } from './services/nav.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NavService } from './services/nav.service';
     ])
   ],
   providers: [
-    NavService
+    NavService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
