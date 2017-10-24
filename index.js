@@ -10,7 +10,7 @@ const cors = require('cors');
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect(config.uri,{ useMongoClient:true }, (err) => {
+mongoose.connect(config.uri,{ useMongoClient:true }, (err, db) => {
     if(err){
         console.log('Could not connected to database :', err);
     } else{

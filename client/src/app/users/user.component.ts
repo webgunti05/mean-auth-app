@@ -8,18 +8,15 @@ import { AuthService } from '../services/auth.service';
 })
 
 export class UserComponent implements OnInit{
-    users: any = [];
+    users: Array<any>;
     constructor(private authDataSvc: AuthService){
-      
+      this.authDataSvc.getUsers()
+      .subscribe(res => this.users = res);
     }
     
 
     ngOnInit() {
-        this.authDataSvc.getAllUsers()
-        .subscribe(users => {
-            this.users = users;
-            console.log(this.users);
-        });
+      
     }
 
     
