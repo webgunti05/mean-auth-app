@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { NavService } from './services/nav.service';
 import { AuthService } from './services/auth.service';
 import { UserComponent } from './users/user.component';
+import { FeedsComponent } from './feeds/feeds.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UserComponent } from './users/user.component';
     MainpageComponent,
     RegisterComponent,
     LoginComponent,
-    UserComponent
+    UserComponent,
+    FeedsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,7 @@ import { UserComponent } from './users/user.component';
       { path : '', redirectTo : 'Home', pathMatch : 'full'},
       { path : 'Home', component : MainpageComponent},
       { path : 'Register', component : RegisterComponent},
+      { path : 'Feeds', component : FeedsComponent},
       { path : 'Users', component : UserComponent},
       { path : 'Login', component : LoginComponent}
     ])
