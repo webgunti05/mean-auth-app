@@ -3,21 +3,46 @@
 
       <div class="col-xs-12 col-sm-5 col-md-5">
           <h3>Post your feed using below form.</h3>
-          <form class="feed_form">
+          <form class="feed_form" [formGroup]="feedForm" (submit) = "feedUser()">
               <div class="form-group">
-                  <input type="text" class="form-control" formControlName="avatar" name="avatar" placeholder=" ex :Image/path.jpg">
+                  <div [ngClass] = "{'has-error' : (feedForm.controls.avatar.errors && feedForm.controls.avatar.dirty),
+                   'has-success' : !feedForm.controls.avatar.errors}">
+                        <input type="text" class="form-control" formControlName="avatar" name="avatar" placeholder=" ex :Image/path.jpg">
+                        <ul class="help-block">
+                            <li *ngIf="feedForm.controls.avatar.errors?.required && feedForm.controls.avatar.dirty">this filed is required</li>
+                            <li *ngIf="(feedForm.controls.avatar.errors?.minlength || feedForm.controls.avatar.errors?.maxlength) && feedForm.controls.avatar.dirty">Minimum Characters : 3, Maximum Characters : 15</li>
+                            <li *ngIf="feedForm.controls.avatar.errors?.validateAvatar && feedForm.controls.avatar.dirty">The avatar URL must end with .jpg, .jpeg or .png</li>
+                        </ul>
+                  </div>
+                 
               </div>
 
               <div class="form-group">
+                    <div [ngClass] = "{'has-error' : (feedForm.controls.name.errors && feedForm.controls.name.dirty),
+                    'has-success' : !feedForm.controls.name.errors}">
                   <input type="name" class="form-control" formControlName="name" name="name" placeholder=" ex : gunti">
+                  <ul class="help-block">
+                        <li *ngIf="feedForm.controls.name.errors?.required && feedForm.controls.name.dirty">this filed is required</li>
+                        <li *ngIf="(feedForm.controls.name.errors?.minlength || feedForm.controls.name.errors?.maxlength) && feedForm.controls.name.dirty">Minimum Characters : 3, Maximum Characters : 15</li>
+                        <li *ngIf="feedForm.controls.name.errors?.validateAvatar && feedForm.controls.name.dirty">this must be a name</li>
+                    </ul>
+                  </div>
               </div>
 
               <div class="form-group">
+                    <div [ngClass] = "{'has-error' : (feedForm.controls.message.errors && feedForm.controls.message.dirty),
+                    'has-success' : !feedForm.controls.message.errors}">
                   <textarea rows="5" cols="5" class="form-control" name="message" placeholder="Tell about yourself" formControlName = "message"></textarea>
+                  <ul class="help-block">
+                        <li *ngIf="feedForm.controls.message.errors?.required && feedForm.controls.message.dirty">this filed is required</li>
+                        <li *ngIf="(feedForm.controls.message.errors?.minlength || feedForm.controls.message.errors?.maxlength) && feedForm.controls.message.dirty">Minimum Characters : 50, Maximum Characters : 1000</li>
+                        <li *ngIf="feedForm.controls.message.errors?.validateAvatar && feedForm.controls.message.dirty">This must be message</li>
+                    </ul>
+                  </div>
               </div>
 
               <div class="form-group">
-                 <button type="submit" class="btn btn-primary">Post Feed</button>
+                 <button type="submit" [disabled]="!feedForm.valid" class="btn btn-primary">Post Feed</button>
               </div>
 
           </form>

@@ -33,7 +33,7 @@
             <input type="email" name="email" class="form-control" id="email" formControlName="email" placeholder="ex : gunti@something.com">
             <ul class="help-block">
                 <li *ngIf="userForm.controls.email.errors?.required && userForm.controls.email.dirty">This field is required</li>
-                <li *ngIf="(userForm.controls.email.errors?.minlength || userForm.controls.email.errors?.maxlength) && userForm.controls.email.dirty">Minimum Characters : 5, Maximum Characters : 30</li>
+                <li *ngIf="(userForm.controls.email.errors?.minlength || userForm.controls.email.errors?.maxlength) && userForm.controls.email.dirty">Minimum Characters : 5, Maximum Characters : 500</li>
                 <li *ngIf="userForm.controls.email.errors?.validateEmail && userForm.controls.email.dirty">Must be a valid e-mail</li>
             </ul>
           </div>
@@ -46,8 +46,8 @@
           <input type="password" name="password" class="form-control" id="password" formControlName="password" placeholder="ex : xxxxxxxxxx">
           <ul class="help-block">
             <li *ngIf="userForm.controls.password.errors?.required && userForm.controls.password.dirty">This field is required</li>
-            <li *ngIf="(userForm.controls.password.errors?.minlength || userForm.controls.password.errors?.maxlength) && userForm.controls.password.dirty">Minimum Characters : 8, Maximum Characters : 35</li>
-            <li *ngIf="userForm.controls.password.errors?.validateEmail && userForm.controls.password.dirty">Must have atleast one uppercase, lowercase, special character, and number</li>
+            <li *ngIf="(userForm.controls.password.errors?.minlength || userForm.controls.password.errors?.maxlength) && userForm.controls.password.dirty">Minimum Characters : 3, Maximum Characters : 30</li>
+            <li *ngIf="userForm.controls.password.errors?.validateEmail && userForm.controls.password.dirty">This must be a name</li>
             
         </ul>
       </div>

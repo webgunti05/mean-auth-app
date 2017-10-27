@@ -13,6 +13,7 @@ import { NavService } from './services/nav.service';
 import { AuthService } from './services/auth.service';
 import { UserComponent } from './users/user.component';
 import { FeedsComponent } from './feeds/feeds.component';
+import { FeedsService } from './services/feed.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FeedsComponent } from './feeds/feeds.component';
   ],
   providers: [
     NavService,
-    AuthService
+    AuthService,
+    FeedsService
   ],
   bootstrap: [AppComponent]
 })
