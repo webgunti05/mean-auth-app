@@ -8,16 +8,20 @@ import { FeedsService } from '../services/feed.service';
   styleUrls: ['./feeds.component.css']
 })
 export class FeedsComponent implements OnInit {
-
+  feeds:Array<any>
   feedForm : FormGroup;
   message;
   messageClass;
   proccesing;
-  constructor(private frmBuilder : FormBuilder, private fedSvc: FeedsService) {
+
+  constructor(private frmBuilder : FormBuilder, private fedSvc: FeedsService, private fedDataSvc: FeedsService) {
     this.buildForm();
+   
    }
 
   ngOnInit() {
+    this.fedDataSvc.getFeeds()
+    .subscribe(res => this.feeds = res);
   }
 
   buildForm(){
@@ -58,7 +62,7 @@ export class FeedsComponent implements OnInit {
 
 
   validateName(controls){
-    const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
+    const regExp = new RegExp(/^[a-zA-Z\s\d\.]+$/i);
     if(regExp.test(controls.value)){
       return null;
     } else{
@@ -67,7 +71,7 @@ export class FeedsComponent implements OnInit {
   }
 
   validateMessage(controls){
-    const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
+    const regExp = new RegExp(/^[a-zA-Z\s\d\.]+$/i);
     if(regExp.test(controls.value)){
       return null;
     } else{
@@ -91,5 +95,10 @@ export class FeedsComponent implements OnInit {
       }
     });
   }
+
+  loadPage(): void{
+    window.location.reload();
+  }
+  
 
 }

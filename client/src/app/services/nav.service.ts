@@ -5,7 +5,7 @@ export class NavService{
 
     private navList : Array<any>
     constructor(){
-        this.navList = ["Home", "Users", "Feeds", "Register", "Login"];
+        this.navList = ["Home", "Users", "Feeds","Register", "Login"];
     }
 
     getNavList(){

@@ -58,7 +58,7 @@ let validNameChecker = (name) =>{
   if(!name){
     return false;
   } else{
-    const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
+    const regExp = new RegExp(/^[a-zA-Z\s\d\-\.]+$/i);
     return regExp.test(name);
   }
 };
@@ -94,7 +94,7 @@ let validMessageChecker = (message) => {
   if(!message){
     return flase;
   } else{
-    const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
+    const regExp = new RegExp(/^[a-zA-Z\s\d\.]+$/i);
     return regExp.test(message);
   }
 };

@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
   result:any;
-    domain = "http://localhost:8080";
+  domain = "http://localhost:8080";
   constructor(private http:Http) { 
 
   }
@@ -17,10 +17,10 @@ export class AuthService {
   }
  
   getUsers() {
-    return this .http.get(this.domain + '/authentication/users')
+    return this.http.get(this.domain + '/authentication/users')
       .map(result => this.result = result.json().data);
   }
 
- 
+
 
 }

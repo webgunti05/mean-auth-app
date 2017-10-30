@@ -1,4 +1,28 @@
 const Feed = require('../models/feed');
+const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
+
+const connection = (closure) => {
+  return MongoClient.connect('mongodb://localhost:27017/reg', (err, db) => {
+      if (err) return console.log(err);
+
+      closure(db);
+  });
+};
+
+// Error handling
+const sendError = (err, res) => {
+  response.status = 501;
+  response.message = typeof err == 'object' ? err.message : err;
+  res.status(501).json(response);
+};
+
+// Response handling
+let response = {
+  status: 200,
+  data: [],
+  message: null
+};
 
 
 module.exports = (router) => {
@@ -59,7 +83,21 @@ router.post('/feeds', (req, res) => {
 });
 
 
-
+ // Get Feeds
+ router.get('/feeds', (req, res) => {
+  connection((db) => {
+      db.collection('feeds')
+          .find()
+          .toArray()
+          .then((feeds) => {
+              response.data = feeds;
+              res.json(response);
+          })
+          .catch((err) => {
+              sendError(err, res);
+          });
+  });
+});
 
 
 

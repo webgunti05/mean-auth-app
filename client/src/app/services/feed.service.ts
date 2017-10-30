@@ -14,7 +14,12 @@ export class FeedsService{
        
     }
     postFeeds(feed){
-        return this.http.post(this.domain + '/authentication2/feeds', feed).map(res => res.json());
+        return this.http.post('http://localhost:8080/authentication2/feeds', feed).map(res => res.json());
+    }
+
+    getFeeds(){
+        return this.http.get('http://localhost:8080/authentication2/feeds')
+        .map(result => this.result = result.json().data);
     }
 
 }

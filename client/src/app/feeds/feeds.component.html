@@ -42,18 +42,18 @@
               </div>
 
               <div class="form-group">
-                 <button type="submit" [disabled]="!feedForm.valid" class="btn btn-primary">Post Feed</button>
+                 <button type="submit" (click)="loadPage()" [disabled]="!feedForm.valid" class="btn btn-primary">Post Feed</button>
               </div>
 
           </form>
       </div>
 
       <div class="col-xs-12 col-sm-7 col-md-7">
-          <div class="form_data">
-              <img>
-              <h3></h3>
-              <p></p>
-            </div>
+          <ul class="form_data" *ngFor="let feed of feeds">
+              <img src="{{feed.avatar}}" width="100%">
+              <h3>Name : {{feed.name}}</h3>
+              <p>{{feed.message}}</p>
+          </ul>
       </div>
       
 

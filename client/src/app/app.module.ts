@@ -15,6 +15,7 @@ import { UserComponent } from './users/user.component';
 import { FeedsComponent } from './feeds/feeds.component';
 import { FeedsService } from './services/feed.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { FeedsService } from './services/feed.service';
     RegisterComponent,
     LoginComponent,
     UserComponent,
-    FeedsComponent
+    FeedsComponent,
+
   ],
   imports: [
     BrowserModule,
