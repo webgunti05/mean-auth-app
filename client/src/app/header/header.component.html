@@ -11,7 +11,13 @@
     <div class="collapse navbar-collapse" id="myNavbar">
      
       <ul class="nav navbar-nav navbar-right">
-        <li *ngFor = "let item of navList"><a [routerLink]="[item]">{{item}}</a></li>
+        <!-- <li *ngFor = "let item of navList"><a [routerLink]="[item]">{{item}}</a></li> -->
+
+        <li><a [routerLink]="'Home'">Home</a></li>
+        <li><a [routerLink]="'Feeds'">Feeds</a></li>
+        <li><a [routerLink]="'Users'">Users</a></li>
+        <li><a [routerLink]="'Register'">Register</a></li>
+        <li><a [routerLink]="'Login'">Login</a></li>
       </ul>
     </div>
   </div>

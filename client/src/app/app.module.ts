@@ -33,7 +33,7 @@ import { FeedsService } from './services/feed.service';
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot([
-      { path : '', redirectTo : 'Home', pathMatch : 'full'},
+      { path : '', redirectTo : 'Login', pathMatch : 'full'},
       { path : 'Home', component : MainpageComponent},
       { path : 'Register', component : RegisterComponent},
       { path : 'Feeds', component : FeedsComponent},

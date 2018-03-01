@@ -1,20 +1,42 @@
 <div class="container">
   <div class="row">
-    <form class="lg_form">
+
+    
+
+    <form class="lg_form" [formGroup]="loginForm" (submit)="onLoginSubmit()">
+
+        <div class="row show-hide-message">
+            <div [ngClass]="messageClass">{{message}}</div>
+          </div>
 
       <div class="form-group">
         <label for="username">UserName:</label>
-        <input type="text" name="username" class="form-control" formControlName="username" placeholder="ex : gunti@something.com">
+        <div [ngClass]=" {'has-error' : loginForm.controls.username.errors && loginForm.controls.username.dirty,
+                          'has-success' : loginForm.controls.username.valid && loginForm.controls.username.dirty
+                         }">
+            <input type="text" name="username" class="form-control" formControlName="username" placeholder="ex : gunti@something.com">
+            <ul class="help-block">
+              <li *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.dirty">This field is required</li>
+            </ul>
+        </div>
+        
       </div>
 
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" name="password" class="form-control" formControlName="password" placeholder="ex : xxxxxxxxx">
+        <div [ngClass]="{ 'has-error' : loginForm.controls.password.errors && loginForm.controls.password.dirty,
+                        'has-success' : loginForm.controls.password.valid && loginForm.controls.password.dirty}">
+            <input type="password" name="password" class="form-control" formControlName="password" placeholder="ex : xxxxxxxxx">
+            <div class="help-block">
+              <li *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.dirty">This filed is required</li>
+            </div>
+        </div>
+        
       </div>
 
 
       <div class="form-group">
-          <button type="submit" class="btn btn-primary lg_btn">Login</button>
+          <button [disabled]="!loginForm.valid || processing" type="submit" class="btn btn-primary lg_btn">Login</button>
       </div>
 
     </form>
