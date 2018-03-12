@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.loginForm.controls['password'].enable();
   }
 
-  onLoginSubmit(){
+  login(){
     this.processing = true;
     this.disableForm();
     const user = {

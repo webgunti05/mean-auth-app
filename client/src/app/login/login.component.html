@@ -3,7 +3,7 @@
 
     
 
-    <form class="lg_form" [formGroup]="loginForm" (submit)="onLoginSubmit()">
+    <form class="lg_form" [formGroup]="loginForm" (submit)="login()">
 
         <div class="row show-hide-message">
             <div [ngClass]="messageClass">{{message}}</div>
